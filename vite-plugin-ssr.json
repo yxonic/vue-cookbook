@@ -1,0 +1,5 @@
+{
+  "version": "0.3.39",
+  "usesClientRouter": true,
+  "base": "/vue-cookbook/"
+}
