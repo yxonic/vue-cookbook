@@ -30,38 +30,49 @@
         <nav class="mt-6 overflow-hidden">
           <ul class="space-y-4">
             <li>
-              <NavLink class="font-semibold" href="/"> Cookbook </NavLink>
+              <NavLink class="font-semibold" href="/"> Introduction </NavLink>
+            </li>
+            <li>
+              <div class="font-semibold" href="/content">Content</div>
+            </li>
+            <li>
+              <div class="font-semibold" href="/effects">Effects</div>
+            </li>
+            <li>
+              <div class="font-semibold" href="/layouts">Layouts</div>
+            </li>
+            <li>
+              <div class="font-semibold" href="/interactive">Interactive</div>
+
               <ul class="ml-4 mt-2 space-y-1">
                 <li>
                   <NavLink
-                    href="/components"
+                    href="/interactive/01-create-a-popover"
                     active-class="text-blue-700 font-medium"
                   >
-                    Components
+                    Create a popover
+                  </NavLink>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <div class="font-semibold" href="/utilities">Utilities</div>
+
+              <ul class="ml-4 mt-2 space-y-1">
+                <li>
+                  <NavLink
+                    href="/utilities/01-detect-click-outside"
+                    active-class="text-blue-700 font-medium"
+                  >
+                    Detect click outside
                   </NavLink>
                 </li>
                 <li>
                   <NavLink
-                    href="/layouts"
+                    href="/utilities/02-pass-data-along-tree"
                     active-class="text-blue-700 font-medium"
                   >
-                    Layouts
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink
-                    href="/popups"
-                    active-class="text-blue-700 font-medium"
-                  >
-                    Popups
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink
-                    href="/utilities"
-                    active-class="text-blue-700 font-medium"
-                  >
-                    Utilities
+                    Pass data along tree
                   </NavLink>
                 </li>
               </ul>

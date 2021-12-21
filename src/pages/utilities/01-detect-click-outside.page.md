@@ -1,0 +1,48 @@
+---
+title: Detect click outside
+layout: book
+---
+
+# Detect click outside
+
+You want to detect clicks outside an element.
+
+The basic idea is to globally capture clicks, and check whether the clicked element is inside the element of our concern. We need a [template ref](https://v3.vuejs.org/guide/composition-api-template-refs.html) to specify the element, and a callback function. Event listener is loaded / removed along with the Vue component.
+
+```ts
+function useClickOutside(
+  el: Ref<HTMLElement | null>,
+  onClickOutside: () => void,
+  mouseEvent: 'click' | 'dblclick' | 'mouseup' = 'click',
+) {
+  const listener = (e: Event) => {
+    if (el.value && !el.value.contains(e.target as HTMLElement)) {
+      onClickOutside()
+    }
+  }
+  onMounted(() => {
+    document.addEventListener(mouseEvent, listener)
+  })
+  onBeforeUnmount(() => {
+    document.removeEventListener(mouseEvent, listener)
+  })
+}
+```
+
+Another way is to provide a custom `v-click-outside` [directive](https://v3.vuejs.org/guide/custom-directive.html):
+
+```ts
+app.directive('click-outside', {
+  mounted(el, binding) {
+    document.addEventListener(binding.arg || 'click', binding.value)
+  }
+  beforeUnmount(el) {
+    document.removeEventListener(binding.arg || 'click', binding.value)
+  }
+})
+```
+
+Usage:
+```vue
+<div v-click-outside:mouseup="onClickOutside"></div>
+```
