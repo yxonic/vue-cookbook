@@ -17,9 +17,7 @@
         }"
       >
         <div class="flex justify-center">
-          <a-router href="/" class="text-lg font-serif font-bold">
-            VPage
-          </a-router>
+          <a-router href="/" class="font-bold"> Vue Cookbook </a-router>
           <button
             v-if="!defaultLayout"
             class="md:hidden absolute top-5 left-6 text-2xl text-gray-400 hover:text-gray-300 focus:outline-none"
@@ -32,100 +30,38 @@
         <nav class="mt-6 overflow-hidden">
           <ul class="space-y-4">
             <li>
-              <NavLink class="font-semibold" href="/docs">
-                Introduction
-              </NavLink>
-            </li>
-            <li>
-              <NavLink class="font-semibold" href="/docs/installation">
-                Installation
-              </NavLink>
-              <ul class="ml-4 mt-2 space-y-1">
-                <li>
-                  <a-router href="/docs/installation#requirements">
-                    Requirements
-                  </a-router>
-                </li>
-                <li>
-                  <a-router href="/docs/installation#install">
-                    Install
-                  </a-router>
-                </li>
-                <li>
-                  <a-router href="/docs/installation#run-development-server">
-                    Run development server
-                  </a-router>
-                </li>
-              </ul>
-            </li>
-            <li>
-              <NavLink class="font-semibold" href="/docs/getting-started">
-                Getting Started
-              </NavLink>
-              <ul class="ml-4 mt-2 space-y-1">
-                <li>
-                  <a-router href="/docs/getting-started#start-from-an-example">
-                    Start from an example
-                  </a-router>
-                </li>
-                <li>
-                  <a-router href="/docs/getting-started#write-a-new-page">
-                    Write a new page
-                  </a-router>
-                </li>
-                <li>
-                  <a-router href="/docs/getting-started#customize-design">
-                    Customize design
-                  </a-router>
-                </li>
-                <li>
-                  <a-router href="/docs/getting-started#publish-website">
-                    Publish website
-                  </a-router>
-                </li>
-              </ul>
-            </li>
-            <li>
-              <div class="font-semibold">Advanced</div>
+              <NavLink class="font-semibold" href="/"> Cookbook </NavLink>
               <ul class="ml-4 mt-2 space-y-1">
                 <li>
                   <NavLink
-                    href="/docs/advanced/architecture"
+                    href="/components"
                     active-class="text-blue-700 font-medium"
                   >
-                    Architecture
+                    Components
                   </NavLink>
                 </li>
                 <li>
                   <NavLink
-                    href="/docs/advanced/router"
+                    href="/layouts"
                     active-class="text-blue-700 font-medium"
                   >
-                    Router
+                    Layouts
                   </NavLink>
                 </li>
                 <li>
                   <NavLink
-                    href="/docs/advanced/organize"
+                    href="/popups"
                     active-class="text-blue-700 font-medium"
                   >
-                    Organize a large website
+                    Popups
                   </NavLink>
                 </li>
                 <li>
                   <NavLink
-                    href="/docs/advanced/seo"
+                    href="/utilities"
                     active-class="text-blue-700 font-medium"
                   >
-                    SEO
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink
-                    href="/docs/advanced/data"
-                    active-class="text-blue-700 font-medium"
-                  >
-                    Data fetching
+                    Utilities
                   </NavLink>
                 </li>
               </ul>
