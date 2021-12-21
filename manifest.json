@@ -1,11 +1,11 @@
 {
   "_default.page.client.ts": {
-    "file": "assets/_default.page.client.ts.6b118dc3.js",
+    "file": "assets/_default.page.client.ts.9d45c04e.js",
     "src": "_default.page.client.ts",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
-      "_vendor.3053af72.js"
+      "_vendor.47baf629.js"
     ],
     "dynamicImports": [
       "src/layouts/book.layout.vue"
@@ -14,66 +14,57 @@
       "assets/_default.page.client.ts.53da82a8.css"
     ]
   },
-  "_vendor.3053af72.js": {
-    "file": "assets/vendor.3053af72.js",
+  "_vendor.47baf629.js": {
+    "file": "assets/vendor.47baf629.js",
     "dynamicImports": [
       "_error.page.vue",
-      "src/pages/components.page.md",
       "src/pages/index.page.md",
-      "src/pages/layouts.page.md",
-      "src/pages/popups.page.md",
-      "src/pages/utilities.page.md",
+      "src/pages/interactive/01-create-a-popover.page.md",
+      "src/pages/utilities/01-detect-click-outside.page.md",
+      "src/pages/utilities/02-pass-data-along-tree.page.md",
       "_default.page.client.ts",
       "_default.page.server.ts",
       "src/_default.page.route.ts"
     ]
   },
   "_error.page.vue": {
-    "file": "assets/_error.page.9bc4944e.js",
+    "file": "assets/_error.page.ee65819f.js",
     "src": "_error.page.vue",
     "isDynamicEntry": true,
     "imports": [
-      "_vendor.3053af72.js"
-    ]
-  },
-  "src/pages/components.page.md": {
-    "file": "assets/components.page.2218b0a7.js",
-    "src": "src/pages/components.page.md",
-    "isDynamicEntry": true,
-    "imports": [
-      "_vendor.3053af72.js"
+      "_vendor.47baf629.js"
     ]
   },
   "src/pages/index.page.md": {
-    "file": "assets/index.page.3a33c479.js",
+    "file": "assets/index.page.bb221c2b.js",
     "src": "src/pages/index.page.md",
     "isDynamicEntry": true,
     "imports": [
-      "_vendor.3053af72.js"
+      "_vendor.47baf629.js"
     ]
   },
-  "src/pages/layouts.page.md": {
-    "file": "assets/layouts.page.0fa01bb8.js",
-    "src": "src/pages/layouts.page.md",
+  "src/pages/interactive/01-create-a-popover.page.md": {
+    "file": "assets/01-create-a-popover.page.f7c50090.js",
+    "src": "src/pages/interactive/01-create-a-popover.page.md",
     "isDynamicEntry": true,
     "imports": [
-      "_vendor.3053af72.js"
+      "_vendor.47baf629.js"
     ]
   },
-  "src/pages/popups.page.md": {
-    "file": "assets/popups.page.02e102ed.js",
-    "src": "src/pages/popups.page.md",
+  "src/pages/utilities/01-detect-click-outside.page.md": {
+    "file": "assets/01-detect-click-outside.page.2b7429f2.js",
+    "src": "src/pages/utilities/01-detect-click-outside.page.md",
     "isDynamicEntry": true,
     "imports": [
-      "_vendor.3053af72.js"
+      "_vendor.47baf629.js"
     ]
   },
-  "src/pages/utilities.page.md": {
-    "file": "assets/utilities.page.bb0d2ea0.js",
-    "src": "src/pages/utilities.page.md",
+  "src/pages/utilities/02-pass-data-along-tree.page.md": {
+    "file": "assets/02-pass-data-along-tree.page.2be11b43.js",
+    "src": "src/pages/utilities/02-pass-data-along-tree.page.md",
     "isDynamicEntry": true,
     "imports": [
-      "_vendor.3053af72.js"
+      "_vendor.47baf629.js"
     ]
   },
   "_default.page.server.ts": {
@@ -87,11 +78,11 @@
     "isDynamicEntry": true
   },
   "src/layouts/book.layout.vue": {
-    "file": "assets/book.layout.38c07866.js",
+    "file": "assets/book.layout.93654473.js",
     "src": "src/layouts/book.layout.vue",
     "isDynamicEntry": true,
     "imports": [
-      "_vendor.3053af72.js",
+      "_vendor.47baf629.js",
       "_default.page.client.ts"
     ]
   }

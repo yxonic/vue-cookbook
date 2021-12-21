@@ -1,1 +1,0 @@
-import{h as o}from"./vendor.3053af72.js";const e=[o("h1",{},["Vue Cookbook"]),o("p",{},["Vue with Tailwind / WindiCSS is best for web design."])];var r={render(){return e}};const n={title:"Vue Cookbook",layout:"book"};export{r as default,n as frontmatter,e as nodes};
