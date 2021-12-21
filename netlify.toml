@@ -1,0 +1,7 @@
+[build.environment]
+  NPM_FLAGS = "--prefix=/dev/null"
+  NODE_VERSION = "14"
+
+[build]
+  publish = "dist/client"
+  command = "npm i --no-save && npm run build"
