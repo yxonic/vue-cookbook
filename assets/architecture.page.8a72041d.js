@@ -1,1 +1,0 @@
-import{h as e}from"./vendor.b777a5b2.js";const t=[e("h1",{},["Architecture"]),e("p",{},[e("em",{},["TBA"])])];var o={render(){return t}};const a={title:"Architecture - VPage Docs",layout:"book"};export{o as default,a as frontmatter,t as nodes};
