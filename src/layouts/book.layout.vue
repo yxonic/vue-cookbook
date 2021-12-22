@@ -47,10 +47,10 @@
               <ul class="ml-4 mt-2 space-y-1">
                 <li>
                   <NavLink
-                    href="/interactive/01-create-a-popover"
+                    href="/interactive/01-create-a-floating-component"
                     active-class="text-blue-700 font-medium"
                   >
-                    Create a popover
+                    Create a floating component
                   </NavLink>
                 </li>
               </ul>

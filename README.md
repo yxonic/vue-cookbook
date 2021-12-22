@@ -1,50 +1,7 @@
-# VPage
-[![Github Pages](https://github.com/lem0nle/vpage/actions/workflows/gh-pages.yml/badge.svg?branch=main)](https://lem0nle.github.io/vpage)
-[![Netlify](https://img.shields.io/netlify/233f23d5-ac09-41e0-81ea-918eb6f5c744)](https://vpage.netlify.app)
+# Vue Cookbook
 
-<img align="right" src="https://vitejs.dev/logo.svg" height="120px" alt="typescript logo">
+Modern web has become a mixture of technology, design, engineering, marketing, management, and the list goes on. A seemingly simple web page may require a huge amount of work with all these concerns being considered.
 
-> VPage is a _fast_, _modern_ and _flexible_ website starter built on Vite.
+However, web technology is evolving equally fast. After reaching version 3.0 in 2020, the Vue stack has achieved a pretty nice balance of all these concerns, especially combined with the expressive power of utility-first CSS frameworks like TailwindCSS and WindiCSS. We can focus more on ideas we want to express, instead of striving just to make things work. That's why I started writing this cookbook: to share my thoughts on how to express ideas with Vue, and how to do so more clearly and effectively.
 
-[VPage](https://vpage.netlify.app/) is designed for quickly building a website to place your personal homepage, display a project or promote a product, 
-but also very suitable to expand into more dynamic and complex front-end projects.
-
-### Features
-* Start a website with no effort. Easy to write, build and deploy.
-* Fast development with great guidance and instant feedback.
-* Production-ready infrastructure for websites from small to large.
-* Full control over everything without going through configuration hell.
-
-## Quick Start
-You can simply [use this template](https://github.com/lem0nle/vpage/generate) to create your own repo on Github.
-
-If you wish to deploy on Github Pages, simply use this template to create a repo called `<your-github-username>.github.io`. 
-
-To deploy on netlify, visit [Netlify](https://app.netlify.com/start) and select your cloned project. 
-
-## Development
-To further add some customized needs and make it more dynamic, clone or create a local project with this template:
-
-```bash
-npx degit lem0nle/vpage my-page
-cd my-page
-npm install
-```
-
-Run the following command and check http://localhost:3000.
-```bash
-npm run dev
-```
-
-Build your website:
-```bash
-npm run build
-```
-
-Then deploy `dist/client` as a static website, or start a production server with:
-```bash
-npm run serve
-```
-
-## Philosophy
-Configuring things repeatedly sucks.
+Though this cookbook is written in Vue, the ideas about UI, design, engineering, and so on, apply to other frameworks as well. Therefore, in this cookbook, I won't go through any technology details. Each recipe tries to be clear about what we want to achieve, and gives a big picture on how to achieve it, but not explaining the process step-by-step. I hope it will help more general audience to rethink about web design and development.
