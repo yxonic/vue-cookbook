@@ -5,8 +5,10 @@ layout: book
 
 # Pass data along tree
 
+## Problem
 You have a homogeneous component tree (e.g. nested comments, menus), and you want to pass data from parent to children.
 
+## Solution
 Typical way of passing data to child components is to use props. However, this would expose implementation details in public API, and sometimes is not what you want. This also requires component user to correctly fill in props, if the component tree is composed by user:
 
 ```vue

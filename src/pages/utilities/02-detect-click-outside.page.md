@@ -5,8 +5,10 @@ layout: book
 
 # Detect click outside
 
+## Problem
 You want to detect clicks outside an element.
 
+## Solution
 The basic idea is to globally capture clicks, and check whether the clicked element is inside the element of our concern. We need a [template ref](https://v3.vuejs.org/guide/composition-api-template-refs.html) to specify the element, and a callback function. Event listener is loaded / removed along with the Vue component.
 
 ```ts

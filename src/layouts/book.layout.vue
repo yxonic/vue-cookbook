@@ -44,7 +44,7 @@
             <li>
               <div class="font-semibold" href="/interactive">Interactive</div>
 
-              <ul class="ml-4 mt-2 space-y-2 leading-tight">
+              <ul class="ml-4 mt-2 space-y-2 leading-snug">
                 <li>
                   <NavLink
                     href="/interactive/01-create-a-floating-component"
@@ -58,7 +58,7 @@
             <li>
               <div class="font-semibold" href="/utilities">Utilities</div>
 
-              <ul class="ml-4 mt-2 space-y-2 leading-tight">
+              <ul class="ml-4 mt-2 space-y-2 leading-snug">
                 <li>
                   <NavLink
                     href="/utilities/01-assert-with-type-assertion"

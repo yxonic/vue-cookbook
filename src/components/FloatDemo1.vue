@@ -9,5 +9,5 @@
   element.
 </template>
 <script lang="ts" setup>
-import Float from './Float.vue'
+import Float from './Float1.vue'
 </script>
