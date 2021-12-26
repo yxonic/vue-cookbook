@@ -12,6 +12,7 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "@floating-ui/dom": "^0.1.8",
     "@vueuse/head": "^0.7.2",
     "@yxonic/vmark": "^0.1.26",
     "vue": "^3.2.26",

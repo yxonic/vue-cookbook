@@ -44,7 +44,7 @@
             <li>
               <div class="font-semibold" href="/interactive">Interactive</div>
 
-              <ul class="ml-4 mt-2 space-y-1">
+              <ul class="ml-4 mt-2 space-y-2 leading-tight">
                 <li>
                   <NavLink
                     href="/interactive/01-create-a-floating-component"
@@ -58,10 +58,18 @@
             <li>
               <div class="font-semibold" href="/utilities">Utilities</div>
 
-              <ul class="ml-4 mt-2 space-y-1">
+              <ul class="ml-4 mt-2 space-y-2 leading-tight">
                 <li>
                   <NavLink
-                    href="/utilities/01-detect-click-outside"
+                    href="/utilities/01-assert-with-type-assertion"
+                    active-class="text-blue-700 font-medium"
+                  >
+                    Assert with type assertion
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    href="/utilities/02-detect-click-outside"
                     active-class="text-blue-700 font-medium"
                   >
                     Detect click outside
@@ -69,7 +77,7 @@
                 </li>
                 <li>
                   <NavLink
-                    href="/utilities/02-pass-data-along-tree"
+                    href="/utilities/03-pass-data-along-tree"
                     active-class="text-blue-700 font-medium"
                   >
                     Pass data along tree

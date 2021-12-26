@@ -1,4 +1,5 @@
 import path from 'path'
+import fs from 'fs'
 import { defineConfig } from 'vite'
 // plugins
 import SSR from 'vite-plugin-ssr/plugin'
@@ -24,7 +25,18 @@ export default defineConfig({
     WindiCSS(),
     Icons({ autoInstall: true }),
     VMark({
-      componentResolver: [IconResolver()],
+      componentResolver: [
+        (name, id) => {
+          const parts = id.split('/')
+          const componentPath =
+            parts.slice(0, parts.lastIndexOf('pages')).join('/') +
+            '/components/' +
+            name +
+            '.vue'
+          if (fs.existsSync(componentPath)) return componentPath
+        },
+        IconResolver(),
+      ],
       defaultComponentDir: path.resolve(__dirname, 'src/components'),
       componentDirResolver: (id) => {
         const path = id.split('/')
