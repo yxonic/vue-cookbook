@@ -51,5 +51,25 @@ export async function createApp(ctx: PageContext) {
 
   app.component('ARouter', RouterLink)
 
+  function listener(el: Element, onClickOutside: () => void) {
+    return (e: Event) => {
+      if (el && !el.contains(e.target as HTMLElement)) {
+        onClickOutside()
+      }
+    }
+  }
+  app.directive('click-outside', {
+    mounted(el, binding) {
+      el.clickOutsideListener = listener(el, binding.value)
+      document.addEventListener(binding.arg || 'click', el.clickOutsideListener)
+    },
+    beforeUnmount(el, binding) {
+      document.removeEventListener(
+        binding.arg || 'click',
+        el.clickOutsideListener,
+      )
+    },
+  })
+
   return { app, head, context, frontmatter, layout }
 }

@@ -34,13 +34,24 @@ function useClickOutside(
 Another way is to provide a custom `v-click-outside` [directive](https://v3.vuejs.org/guide/custom-directive.html):
 
 ```ts
+function listener(el: Element, onClickOutside: () => void) {
+  return (e: Event) => {
+    if (el && !el.contains(e.target as HTMLElement)) {
+      onClickOutside()
+    }
+  }
+}
 app.directive('click-outside', {
   mounted(el, binding) {
-    document.addEventListener(binding.arg || 'click', binding.value)
-  }
-  beforeUnmount(el) {
-    document.removeEventListener(binding.arg || 'click', binding.value)
-  }
+    el.clickOutsideListener = listener(el, binding.value)
+    document.addEventListener(binding.arg || 'click', el.clickOutsideListener)
+  },
+  beforeUnmount(el, binding) {
+    document.removeEventListener(
+      binding.arg || 'click',
+      el.clickOutsideListener,
+    )
+  },
 })
 ```
 

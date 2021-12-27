@@ -21,7 +21,16 @@ export default defineConfig({
   },
   plugins: [
     SSR(),
-    Vue(),
+    Vue({
+      template: {
+        ssr: true,
+        compilerOptions: {
+          directiveTransforms: {
+            'click-outside': () => ({ props: [], needRuntime: true }),
+          },
+        },
+      },
+    }),
     WindiCSS(),
     Icons({ autoInstall: true }),
     VMark({

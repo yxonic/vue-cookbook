@@ -1,20 +1,21 @@
 <template>
-  <div class="text-center py-2">
-    <Float :visible="visible" class="inline-block">
-      <button class="btn" @click="visible = !visible">click to toggle</button>
+  <div class="relative text-center py-4">
+    <Float class="inline-block btn" placement="top">
+      button
       <template #floating>
-        <div class="px-2 py-1 bg-white border rounded-lg">tooltip</div>
+        <div class="tooltip">tooltip</div>
       </template>
     </Float>
   </div>
 </template>
 <script lang="ts" setup>
-import { ref } from 'vue'
 import Float from './Float2.vue'
-const visible = ref(false)
 </script>
 <style lang="postcss">
 .btn {
-  @apply px-3 py-1 bg-gray-800 text-white font-semibold rounded-lg;
+  @apply px-3 py-1 bg-gray-800 text-white font-semibold rounded-lg cursor-pointer;
+}
+.tooltip {
+  @apply px-2 py-1 bg-white ring-1 ring-gray-200 rounded-lg shadow-sm;
 }
 </style>
