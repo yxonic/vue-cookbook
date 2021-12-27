@@ -1,21 +1,21 @@
 {
   "_default.page.client.ts": {
-    "file": "assets/_default.page.client.ts.065b90ac.js",
+    "file": "assets/_default.page.client.ts.5edf824d.js",
     "src": "_default.page.client.ts",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
-      "_vendor.c72f9abb.js"
+      "_vendor.4c9b330d.js"
     ],
     "dynamicImports": [
       "src/layouts/book.layout.vue"
     ],
     "css": [
-      "assets/_default.page.client.ts.b6c0df43.css"
+      "assets/_default.page.client.ts.1a54ef87.css"
     ]
   },
-  "_vendor.c72f9abb.js": {
-    "file": "assets/vendor.c72f9abb.js",
+  "_vendor.4c9b330d.js": {
+    "file": "assets/vendor.4c9b330d.js",
     "dynamicImports": [
       "_error.page.vue",
       "src/pages/index.page.md",
@@ -29,55 +29,54 @@
     ]
   },
   "_error.page.vue": {
-    "file": "assets/_error.page.dc006fbe.js",
+    "file": "assets/_error.page.6143aead.js",
     "src": "_error.page.vue",
     "isDynamicEntry": true,
     "imports": [
-      "_vendor.c72f9abb.js"
+      "_vendor.4c9b330d.js"
     ]
   },
   "src/pages/index.page.md": {
-    "file": "assets/index.page.85ca741f.js",
+    "file": "assets/index.page.c661e1a2.js",
     "src": "src/pages/index.page.md",
     "isDynamicEntry": true,
     "imports": [
-      "_vendor.c72f9abb.js"
+      "_vendor.4c9b330d.js"
     ]
   },
   "src/pages/interactive/01-create-a-floating-component.page.md": {
-    "file": "assets/01-create-a-floating-component.page.5212ea8c.js",
+    "file": "assets/01-create-a-floating-component.page.e75e95e1.js",
     "src": "src/pages/interactive/01-create-a-floating-component.page.md",
     "isDynamicEntry": true,
     "imports": [
-      "_vendor.c72f9abb.js",
-      "_default.page.client.ts"
+      "_vendor.4c9b330d.js"
     ],
     "css": [
-      "assets/01-create-a-floating-component.page.80fa96ef.css"
+      "assets/01-create-a-floating-component.page.8826e69c.css"
     ]
   },
   "src/pages/utilities/01-assert-with-type-assertion.page.md": {
-    "file": "assets/01-assert-with-type-assertion.page.43c75199.js",
+    "file": "assets/01-assert-with-type-assertion.page.ca958b04.js",
     "src": "src/pages/utilities/01-assert-with-type-assertion.page.md",
     "isDynamicEntry": true,
     "imports": [
-      "_vendor.c72f9abb.js"
+      "_vendor.4c9b330d.js"
     ]
   },
   "src/pages/utilities/02-detect-click-outside.page.md": {
-    "file": "assets/02-detect-click-outside.page.1c506fb8.js",
+    "file": "assets/02-detect-click-outside.page.489cd666.js",
     "src": "src/pages/utilities/02-detect-click-outside.page.md",
     "isDynamicEntry": true,
     "imports": [
-      "_vendor.c72f9abb.js"
+      "_vendor.4c9b330d.js"
     ]
   },
   "src/pages/utilities/03-pass-data-along-tree.page.md": {
-    "file": "assets/03-pass-data-along-tree.page.0887242f.js",
+    "file": "assets/03-pass-data-along-tree.page.66c1e449.js",
     "src": "src/pages/utilities/03-pass-data-along-tree.page.md",
     "isDynamicEntry": true,
     "imports": [
-      "_vendor.c72f9abb.js"
+      "_vendor.4c9b330d.js"
     ]
   },
   "_default.page.server.ts": {
@@ -91,11 +90,11 @@
     "isDynamicEntry": true
   },
   "src/layouts/book.layout.vue": {
-    "file": "assets/book.layout.c11a5551.js",
+    "file": "assets/book.layout.204d3163.js",
     "src": "src/layouts/book.layout.vue",
     "isDynamicEntry": true,
     "imports": [
-      "_vendor.c72f9abb.js",
+      "_vendor.4c9b330d.js",
       "_default.page.client.ts"
     ]
   }

@@ -4,41 +4,65 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#ffffff">
-<link rel="stylesheet" type="text/css" href="/vue-cookbook/assets/_default.page.client.ts.b6c0df43.css"><link rel="stylesheet" type="text/css" href="/vue-cookbook/assets/01-create-a-floating-component.page.80fa96ef.css"><link rel="modulepreload" as="script" type="text/javascript" href="/vue-cookbook/assets/vendor.c72f9abb.js"><link rel="modulepreload" as="script" type="text/javascript" href="/vue-cookbook/assets/_default.page.client.ts.065b90ac.js"></head>
+<link rel="stylesheet" type="text/css" href="/vue-cookbook/assets/01-create-a-floating-component.page.8826e69c.css"><link rel="stylesheet" type="text/css" href="/vue-cookbook/assets/_default.page.client.ts.1a54ef87.css"><link rel="modulepreload" as="script" type="text/javascript" href="/vue-cookbook/assets/vendor.4c9b330d.js"></head>
 <body class="antialiased text-gray-900">
-  <div id="app"><article class="absolute inset-0 grid grid-cols-[auto,1fr] grid-rows-[auto,1fr]"><div class="w-0 md:w-64 row-span-2 overflow-hidden"><aside class="hidden md:block md:translate-x-0 fixed inset-0 md:w-64 overflow-scroll bg-gray-50 z-10 p-6 transition ease-in-out transform"><div class="flex justify-center"><a href="/vue-cookbook/" class="font-bold"> Vue Cookbook </a><!----></div><hr class="mt-4"><nav class="mt-6 overflow-hidden"><ul class="space-y-4"><li><a href="/vue-cookbook/" class="font-semibold"><!--[--> Introduction <!--]--></a></li><li><div class="font-semibold" href="/content">Content</div></li><li><div class="font-semibold" href="/effects">Effects</div></li><li><div class="font-semibold" href="/layouts">Layouts</div></li><li><div class="font-semibold" href="/interactive">Interactive</div><ul class="ml-4 mt-2 space-y-2 leading-snug"><li><a href="/vue-cookbook/interactive/01-create-a-floating-component" class="text-blue-700 font-medium"><!--[--> Create a floating component <!--]--></a></li></ul></li><li><div class="font-semibold" href="/utilities">Utilities</div><ul class="ml-4 mt-2 space-y-2 leading-snug"><li><a href="/vue-cookbook/utilities/01-assert-with-type-assertion" class=""><!--[--> Assert with type assertion <!--]--></a></li><li><a href="/vue-cookbook/utilities/02-detect-click-outside" class=""><!--[--> Detect click outside <!--]--></a></li><li><a href="/vue-cookbook/utilities/03-pass-data-along-tree" class=""><!--[--> Pass data along tree <!--]--></a></li></ul></li></ul></nav></aside></div><header class="col-start-2 px-6 py-4 flex items-center justify-between"><button class="-ml-2.5 text-2xl font-medium text-gray-400 px-3 py-1 rounded hover:bg-gray-100 focus:outline-none"> ≡ </button><a class="h-6" href="https://github.com/lem0nle/vpage" target="_blank" rel="noopener"><svg class="h-6 text-gray-400 fill-current" aria-hidden="true" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg></a></header><main class="col-start-2 overflow-scroll"><article class="prose mx-auto p-6"><!--[--><!--[--><h1>Create a floating component</h1><h2>Problem</h2><p>You want to show a menu or tooltip, after user clicks / hovers a button.</p><h2>Solution</h2><p>Floating components doesn’t disrupt the flow of the main content. Therefore, we actually don’t have to make any modification to the main content. The biggest concerns of building a floating component are about the floating element itself:</p><ol><li>We should decide the position of the floating element relative to the reference element.</li><li>We want to control when and how it appears / disappears.</li></ol><p>For the first concern, there is a dedicated library specifically for floating element positioning called <a href="http://floating-ui.com">Floating UI</a> (formerly <a href="https://popper.js.org">Popper.js</a>). It helps us to calculate the relative position of the floating element to the reference, with a handy collection of positioning strategies supported. While it is good to use it as the documentation demonstrates, we may still want to integrate it into a Vue component, in order to have a more consistent API with better organization and control of logic.</p><h3>Take #1</h3><p>For convenience, we want our Vue component to wrap the reference element, and also be able to write the floating component within it. We can achieve this by using <a href="https://v3.vuejs.org/guide/component-slots.html#named-slots">named slots</a>. The inital API design would be like this:</p><pre>&lt;Float class=&quot;inline-block underline&quot;&gt;
-  floating
-  &lt;template #floating&gt;
-    &lt;div class=&quot;px-2 py-1 bg-white border rounded-lg&quot;&gt;tooltip&lt;/div&gt;
-  &lt;/template&gt;
-&lt;/Float&gt;
+  <div id="app"><article class="absolute inset-0 grid grid-cols-[auto,1fr] grid-rows-[auto,1fr]"><div class="w-0 md:w-64 row-span-2 overflow-hidden"><aside class="hidden md:block md:translate-x-0 fixed inset-0 md:w-64 overflow-scroll bg-gray-50 z-10 p-6 transition ease-in-out transform"><div class="flex justify-center"><a href="/vue-cookbook/" class="font-bold"> Vue Cookbook </a><!----></div><hr class="mt-4"><nav class="mt-6 overflow-hidden"><ul class="space-y-4"><li><a href="/vue-cookbook/" class="font-semibold"><!--[--> Introduction <!--]--></a></li><li><div class="font-semibold" href="/content">Content</div></li><li><div class="font-semibold" href="/effects">Effects</div></li><li><div class="font-semibold" href="/layouts">Layouts</div></li><li><div class="font-semibold" href="/interactive">Interactive</div><ul class="ml-4 mt-2 space-y-2 leading-snug"><li><a href="/vue-cookbook/interactive/01-create-a-floating-component" class="text-blue-700 font-medium"><!--[--> Create a floating component <!--]--></a></li></ul></li><li><div class="font-semibold" href="/utilities">Utilities</div><ul class="ml-4 mt-2 space-y-2 leading-snug"><li><a href="/vue-cookbook/utilities/01-assert-with-type-assertion" class=""><!--[--> Assert with type assertion <!--]--></a></li><li><a href="/vue-cookbook/utilities/02-detect-click-outside" class=""><!--[--> Detect click outside <!--]--></a></li><li><a href="/vue-cookbook/utilities/03-pass-data-along-tree" class=""><!--[--> Pass data along tree <!--]--></a></li></ul></li></ul></nav></aside></div><header class="col-start-2 px-6 py-4 flex items-center justify-between"><button class="-ml-2.5 text-2xl font-medium text-gray-400 px-3 py-1 rounded hover:bg-gray-100 focus:outline-none"> ≡ </button><a class="h-6" href="https://github.com/lem0nle/vpage" target="_blank" rel="noopener"><svg class="h-6 text-gray-400 fill-current" aria-hidden="true" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg></a></header><main class="col-start-2 overflow-scroll"><article class="prose mx-auto p-6"><!--[--><!--[--><h1>Create a floating component</h1><h2>Problem</h2><p>You want to show a menu or tooltip like this, after user clicks / hovers a button:</p><div class="relative text-center py-4"><!--[--><div ref_key="reference" class="inline-block"><!--[--><button class="btn">show menu</button><!--]--></div><!----><!--]--></div><h2>Solution</h2><p>Floating components doesn’t disrupt the flow of the main content. Therefore, we actually don’t have to make any modification to the main content. The biggest concerns of building a floating component are about the floating element itself:</p><ol><li>We should decide the position of the floating element relative to the reference element.</li><li>We want to control when and how it appears / disappears.</li></ol><p>For the first concern, there is a dedicated library specifically for floating element positioning called <a href="http://floating-ui.com">Floating UI</a> (formerly <a href="https://popper.js.org">Popper.js</a>). It helps us to calculate the relative position of the floating element to the reference, with a handy collection of positioning strategies supported. While it is good to use it as the documentation demonstrates, we may still want to integrate it into a Vue component, in order to have a more consistent API with better organization and control of logic.</p><h3>Take #1</h3><p>For convenience, we want our Vue component to wrap the reference element, and also be able to write the floating component within it. We can achieve this by using <a href="https://v3.vuejs.org/guide/component-slots.html#named-slots">named slots</a>. The inital API design would be like this:</p><pre>&lt;template&gt;
+  &lt;div class=&quot;relative text-center py-4&quot;&gt;
+    &lt;Float class=&quot;inline-block btn&quot; placement=&quot;top&quot;&gt;
+      button
+      &lt;template #floating&gt;
+        &lt;div class=&quot;tooltip&quot;&gt;tooltip&lt;/div&gt;
+      &lt;/template&gt;
+    &lt;/Float&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+&lt;script lang=&quot;ts&quot; setup&gt;
+import Float from &#39;./Float1.vue&#39;
+&lt;/script&gt;
+&lt;style lang=&quot;postcss&quot;&gt;
+.btn {
+  @apply px-3 py-1 bg-gray-800 text-white font-semibold rounded-lg cursor-pointer;
+}
+.tooltip {
+  @apply px-2 py-1 bg-white ring-1 ring-gray-200 rounded-lg shadow-sm;
+}
+&lt;/style&gt;
 </pre><p>We write a basic component positioning logic:</p><pre>&lt;template&gt;
-  &lt;span ref=&quot;reference&quot; v-bind=&quot;$attrs&quot;&gt;
+  &lt;div ref=&quot;reference&quot; v-bind=&quot;$attrs&quot;&gt;
     &lt;slot /&gt;
-    &lt;div
-      ref=&quot;floating&quot;
-      class=&quot;absolute top-0 left-0&quot;
-      :style=&quot;{ transform: `translate(${position.x}px, ${position.y}px)` }&quot;
-    &gt;
-      &lt;slot name=&quot;floating&quot; /&gt;
-    &lt;/div&gt;
-  &lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div
+    ref=&quot;floating&quot;
+    class=&quot;absolute top-0 left-0 z-auto&quot;
+    :style=&quot;{ transform: `translate(${position.x}px, ${position.y}px)` }&quot;
+  &gt;
+    &lt;slot name=&quot;floating&quot; /&gt;
+  &lt;/div&gt;
 &lt;/template&gt;
 &lt;script lang=&quot;ts&quot; setup&gt;
 import { onMounted, ref, reactive, Ref } from &#39;vue&#39;
-import { computePosition, getScrollParents } from &#39;@floating-ui/dom&#39;
+import {
+  computePosition,
+  getScrollParents,
+  offset,
+  shift,
+} from &#39;@floating-ui/dom&#39;
 const reference: Ref&lt;HTMLElement | null&gt; = ref(null)
 const floating: Ref&lt;HTMLElement | null&gt; = ref(null)
 const position = reactive({ x: 0, y: 0 })
 async function update() {
-  assert(reference.value !== null &amp;&amp; floating.value !== null)
+  if (reference.value === null || floating.value === null) return
   const { x, y } = await computePosition(reference.value, floating.value, {
     placement: &#39;top&#39;,
+    middleware: [offset(5), shift()],
   })
-  Object.assign(position, { x, y })
+  Object.assign(position, {
+    x: Math.round(x),
+    y: Math.round(y),
+  })
 }
-onMounted(() =&gt; {
-  assert(reference.value !== null &amp;&amp; floating.value !== null)
+onMounted(async () =&gt; {
+  if (reference.value === null || floating.value === null) return
   update()
   getScrollParents(reference.value).forEach((el) =&gt; {
     el.addEventListener(&#39;scroll&#39;, update)
@@ -46,79 +70,259 @@ onMounted(() =&gt; {
   })
 })
 &lt;/script&gt;
-</pre><!--[--> Result: demo sentence with <span ref_key="reference" class="inline-block underline"><!--[--> floating <!--]--><div class="absolute top-0 left-0" style="transform:translate(0px, 0px);"><!--[--><div class="px-2 py-1 bg-white border rounded-lg">tooltip</div><!--]--></div></span> element. <!--]--><p>Some key features in this implementation:</p><ol><li>We put the floating element intially at top-left corner with <code>position: absolute</code>, to make sure it can be moved correctly and efficiently using CSS transform <code>translate()</code>.</li><li>We use reactive variable <code>position</code> to track position change, and use inline style binding to actually set position. The position is calculated by Floating UI in function <code>update</code>.</li><li>It is made explicit that the position of the floating element is recalculated whenever the reference element changes position (when scroll or resize happens to one of its ancestors).</li></ol><h3>Take #2</h3><p>Now we want to control whether the floating element is visible. Our first implementation is a simple one: click to toggle visibility.</p><div class="text-center py-2"><span ref_key="reference" class="inline-block"><!--[--><button class="btn">click to toggle</button><!--]--><!----></span></div><pre>&lt;template&gt;
-  &lt;Float :visible=&quot;visible&quot; class=&quot;inline-block&quot;&gt;
-    &lt;button class=&quot;btn&quot; @click=&quot;visible = !visible&quot;&gt;click to toggle&lt;/button&gt;
-    &lt;template #floating&gt;
-      &lt;div class=&quot;px-2 py-1 bg-white border rounded-lg&quot;&gt;tooltip&lt;/div&gt;
-    &lt;/template&gt;
-  &lt;/Float&gt;
-&lt;/template&gt;
-&lt;style lang=&quot;postcss&quot;&gt;
-.btn {
-  @apply px-3 py-1 bg-gray-800 text-white font-semibold rounded-lg;
-}
-&lt;/style&gt;
-</pre><pre>&lt;template&gt;
-  &lt;span ref=&quot;reference&quot; v-bind=&quot;$attrs&quot;&gt;
+</pre><p>The result looks like:</p><div class="relative text-center py-4"><!--[--><div ref_key="reference" class="inline-block btn" placement="top"><!--[--> button <!--]--></div><div class="absolute top-0 left-0 z-auto" style="transform:translate(0px, 0px);"><!--[--><div class="tooltip">tooltip</div><!--]--></div><!--]--></div><p>Some key features in this implementation:</p><ol><li>We put the floating element intially at top-left corner with <code>position: absolute</code>, to make sure it can be moved correctly and efficiently using CSS transform <code>translate()</code>.</li><li>We use reactive variable <code>position</code> to track position change, and use inline style binding to actually set position. The position is calculated by Floating UI in function <code>update</code>. Notice that we rounded the position for reason described <a href="https://floating-ui.com/docs/misc#subpixel-and-accelerated-positioning">here</a>.</li><li>It is made explicit that the position of the floating element is recalculated whenever the reference element changes position (when scroll or resize happens to one of its ancestors). Details are described <a href="https://floating-ui.com/docs/computePosition#scrollparents">here</a>.</li></ol><h3>Take #2</h3><p>Now we want to control whether the floating element is visible. Our first implementation is a simple one: click to show tooltip, and click outside to hide it.</p><p>Basically, our new component maintains an internal state (<code>visible</code>) for the visibility of the tooltip. On reference element clicking, we modify <code>visible</code> to be true, and register update hooks. We also add a event listener for clicking outside as described <a href="/vue-cookbook/utilities/02-detect-click-outside">here</a>.</p><pre>&lt;template&gt;
+  &lt;div ref=&quot;reference&quot; v-bind=&quot;$attrs&quot; @click=&quot;show&quot;&gt;
     &lt;slot /&gt;
-    &lt;div
-      v-if=&quot;visible&quot;
-      ref=&quot;floating&quot;
-      class=&quot;absolute top-0 left-0&quot;
-      :style=&quot;{ transform: `translate(${position.x}px, ${position.y}px)` }&quot;
-    &gt;
-      &lt;slot name=&quot;floating&quot; /&gt;
-    &lt;/div&gt;
-  &lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div
+    v-if=&quot;visible&quot;
+    ref=&quot;floating&quot;
+    v-click-outside:mouseup=&quot;hide&quot;
+    class=&quot;absolute top-0 left-0&quot;
+    :style=&quot;{ transform: `translate(${position.x}px, ${position.y}px)` }&quot;
+  &gt;
+    &lt;slot name=&quot;floating&quot; /&gt;
+  &lt;/div&gt;
 &lt;/template&gt;
 &lt;script lang=&quot;ts&quot; setup&gt;
-import { watch, ref, reactive, Ref, nextTick } from &#39;vue&#39;
-import { computePosition, getScrollParents } from &#39;@floating-ui/dom&#39;
-import { assert } from &#39;vpage/utils&#39;
+import { ref, reactive, Ref, nextTick } from &#39;vue&#39;
+import {
+  computePosition,
+  getScrollParents,
+  offset,
+  shift,
+} from &#39;@floating-ui/dom&#39;
+import { Placement } from &#39;@floating-ui/core&#39;
 
 const props = defineProps&lt;{
-  visible: boolean
+  placement?: Placement
 }&gt;()
+const visible = ref(false)
 const reference: Ref&lt;HTMLElement | null&gt; = ref(null)
 const floating: Ref&lt;HTMLElement | null&gt; = ref(null)
 const position = reactive({ x: 0, y: 0 })
 
 async function update() {
-  assert(reference.value !== null &amp;&amp; floating.value !== null)
+  if (reference.value === null || floating.value === null) return
   const { x, y } = await computePosition(reference.value, floating.value, {
-    placement: &#39;top&#39;,
+    placement: props.placement,
+    middleware: [offset(5), shift()],
   })
-  Object.assign(position, { x, y })
-}
-function addHooks() {
-  reference.value !== null &amp;&amp;
-    getScrollParents(reference.value).forEach((el) =&gt; {
-      el.addEventListener(&#39;scroll&#39;, update)
-      el.addEventListener(&#39;resize&#39;, update)
-    })
-}
-function removeHooks() {
-  reference.value !== null &amp;&amp;
-    getScrollParents(reference.value).forEach((el) =&gt; {
-      el.removeEventListener(&#39;scroll&#39;, update)
-      el.removeEventListener(&#39;resize&#39;, update)
-    })
+  Object.assign(position, {
+    x: Math.round(x),
+    y: Math.round(y),
+  })
 }
 
-watch(
-  () =&gt; props.visible,
-  (v) =&gt; {
-    if (v)
-      nextTick(() =&gt; {
-        update()
-        addHooks()
-      })
-    else removeHooks()
-  },
-  { immediate: true },
-)
+function addHooks() {
+  if (reference.value === null) return
+  getScrollParents(reference.value).forEach((el) =&gt; {
+    el.addEventListener(&#39;scroll&#39;, update)
+    el.addEventListener(&#39;resize&#39;, update)
+  })
+}
+function removeHooks() {
+  if (reference.value === null) return
+  getScrollParents(reference.value).forEach((el) =&gt; {
+    el.removeEventListener(&#39;scroll&#39;, update)
+    el.removeEventListener(&#39;resize&#39;, update)
+  })
+}
+function show() {
+  if (visible.value === true) return
+  visible.value = true
+  nextTick(() =&gt; {
+    update()
+    addHooks()
+  })
+}
+function hide() {
+  if (visible.value === false) return
+  removeHooks()
+  visible.value = false
+}
 &lt;/script&gt;
-</pre><p>Here we use <code>v-if</code> on <code>visible</code> prop to control the visibility of the floating element. Each time <code>props.visible</code> is set or changed, we should recalculate the position and maintain the update hooks. We achieve this by using <a href="https://v3.vuejs.org/guide/reactivity-computed-watchers.html#watching-reactive-objects"><code>watch</code></a>. Notice that we use <code>{ immediate: true }</code> to setup on inital state. We also use <code>nextTick</code> to ensure floating element is rendered before we update its position.</p><h3>Take #3</h3><p>We want to support more natural interactions like click outside to hide.</p><!--]--><!--]--></article><footer class="h-16"></footer></main></article></div>
-<script type="module" src="/vue-cookbook/assets/_default.page.client.ts.065b90ac.js"></script><script id="vite-plugin-ssr_pageContext" type="application/json">{"pageContext":{"_pageId":"/src/pages/interactive/01-create-a-floating-component","pageProps":"!undefined","urlParsedServer":{"origin":null,"pathnameWithBaseUrl":"/interactive/01-create-a-floating-component","hasBaseUrl":false,"search":{},"searchString":null,"hash":"","hashString":null,"isPageContextRequest":false,"pathname":"/interactive/01-create-a-floating-component"}}}</script></body>
+</pre><p>The result looks like:</p><div class="relative text-center py-4"><!--[--><div ref_key="reference" class="inline-block btn"><!--[--> button <!--]--></div><!----><!--]--></div><h3>Take #3</h3><p>The final version includes more features to make it even more usable:</p><ol><li>We support different types of triggering condition (hover). We do this by attaching hooks to mouseover and mouseleave events.</li><li>We allow the user to access and change the internal visibility state (See <a href="https://v3.vuejs.org/guide/component-slots.html#scoped-slots">scoped slots</a>).</li><li>We support a smooth transition on visibility change. We do this according to <a href="https://v3.vuejs.org/guide/transitions-enterleave.html#custom-transition-classes">Vue documentation</a>.</li></ol><p>The implementation looks like this:</p><pre>&lt;template&gt;
+  &lt;div
+    ref=&quot;reference&quot;
+    v-bind=&quot;$attrs&quot;
+    @click=&quot;show&quot;
+    @mouseover=&quot;onMouseOver&quot;
+    @mouseleave=&quot;onMouseLeave&quot;
+  &gt;
+    &lt;slot :active=&quot;visible&quot; :show=&quot;show&quot; :hide=&quot;hide&quot; /&gt;
+  &lt;/div&gt;
+  &lt;transition
+    enter-active-class=&quot;transition-opacity duration-100 ease-out&quot;
+    leave-active-class=&quot;transition-opacity duration-100 ease-out&quot;
+    enter-from-class=&quot;opacity-0&quot;
+    leave-to-class=&quot;opacity-0&quot;
+  &gt;
+    &lt;div
+      v-if=&quot;visible&quot;
+      ref=&quot;floating&quot;
+      v-click-outside:mouseup=&quot;hide&quot;
+      class=&quot;absolute top-0 left-0&quot;
+      :style=&quot;{ transform: `translate(${position.x}px, ${position.y}px)` }&quot;
+      @mouseover=&quot;onMouseOver&quot;
+      @mouseleave=&quot;onMouseLeave&quot;
+    &gt;
+      &lt;slot name=&quot;floating&quot; :visible=&quot;visible&quot; :show=&quot;show&quot; :hide=&quot;hide&quot; /&gt;
+    &lt;/div&gt;
+  &lt;/transition&gt;
+&lt;/template&gt;
+&lt;script lang=&quot;ts&quot; setup&gt;
+import { ref, reactive, Ref, nextTick } from &#39;vue&#39;
+import {
+  computePosition,
+  getScrollParents,
+  offset,
+  shift,
+} from &#39;@floating-ui/dom&#39;
+import { Placement } from &#39;@floating-ui/core&#39;
+
+const props = defineProps&lt;{
+  type?: &#39;click&#39; | &#39;hover&#39; | &#39;manual&#39;
+  placement?: Placement
+}&gt;()
+
+const visible = ref(false)
+const reference: Ref&lt;HTMLElement | null&gt; = ref(null)
+const floating: Ref&lt;HTMLElement | null&gt; = ref(null)
+const position = reactive({ x: 0, y: 0 })
+
+async function update() {
+  if (reference.value === null || floating.value === null) return
+  const { x, y } = await computePosition(reference.value, floating.value, {
+    placement: props.placement,
+    middleware: [offset(5), shift()],
+  })
+  Object.assign(position, {
+    x: Math.round(x),
+    y: Math.round(y),
+  })
+}
+
+function addHooks() {
+  if (reference.value === null) return
+  getScrollParents(reference.value).forEach((el) =&gt; {
+    el.addEventListener(&#39;scroll&#39;, update)
+    el.addEventListener(&#39;resize&#39;, update)
+  })
+}
+function removeHooks() {
+  if (reference.value === null) return
+  getScrollParents(reference.value).forEach((el) =&gt; {
+    el.removeEventListener(&#39;scroll&#39;, update)
+    el.removeEventListener(&#39;resize&#39;, update)
+  })
+}
+
+function show() {
+  if (visible.value === true) return
+  visible.value = true
+  nextTick(() =&gt; {
+    update()
+    addHooks()
+  })
+}
+function hide() {
+  if (visible.value === false) return
+  removeHooks()
+  visible.value = false
+}
+
+const protect = ref(false)
+function onMouseOver() {
+  if (props.type !== &#39;hover&#39;) return
+  protect.value = true
+  show()
+}
+function onMouseLeave() {
+  if (props.type !== &#39;hover&#39;) return
+  protect.value = false
+  setTimeout(() =&gt; {
+    if (!protect.value) hide()
+  }, 50)
+}
+&lt;/script&gt;
+</pre><pre>&lt;template&gt;
+  &lt;div class=&quot;relative text-center py-4&quot;&gt;
+    &lt;Float class=&quot;inline-block&quot; placement=&quot;bottom-start&quot;&gt;
+      &lt;template #default&gt;
+        &lt;button class=&quot;btn&quot;&gt;show menu&lt;/button&gt;
+      &lt;/template&gt;
+      &lt;template #floating=&quot;root&quot;&gt;
+        &lt;div class=&quot;menu&quot;&gt;
+          &lt;Float class=&quot;block&quot; type=&quot;hover&quot; placement=&quot;right-start&quot;&gt;
+            &lt;template #default=&quot;props&quot;&gt;
+              &lt;button
+                class=&quot;menu-item&quot;
+                :class=&quot;{ &#39;bg-gray-100&#39;: props.active }&quot;
+              &gt;
+                menu 1
+              &lt;/button&gt;
+            &lt;/template&gt;
+            &lt;template #floating&gt;
+              &lt;div class=&quot;menu -mt-1&quot;&gt;
+                &lt;Float class=&quot;block&quot; type=&quot;hover&quot; placement=&quot;right-start&quot;&gt;
+                  &lt;template #default=&quot;props&quot;&gt;
+                    &lt;button
+                      class=&quot;menu-item&quot;
+                      :class=&quot;props.active ? &#39;bg-gray-100&#39; : &#39;bg-white&#39;&quot;
+                    &gt;
+                      submenu 1
+                    &lt;/button&gt;
+                  &lt;/template&gt;
+
+                  &lt;template #floating&gt;
+                    &lt;div class=&quot;menu -mt-1&quot;&gt;
+                      &lt;button class=&quot;menu-item&quot; @click=&quot;root.hide&quot;&gt;
+                        close
+                      &lt;/button&gt;
+                    &lt;/div&gt;
+                  &lt;/template&gt;
+                &lt;/Float&gt;
+                &lt;button class=&quot;menu-item&quot; @click=&quot;root.hide&quot;&gt;close&lt;/button&gt;
+              &lt;/div&gt;
+            &lt;/template&gt;
+          &lt;/Float&gt;
+          &lt;Float class=&quot;block&quot; type=&quot;hover&quot; placement=&quot;right-start&quot;&gt;
+            &lt;template #default=&quot;props&quot;&gt;
+              &lt;button
+                class=&quot;menu-item&quot;
+                :class=&quot;props.active ? &#39;bg-gray-100&#39; : &#39;bg-white&#39;&quot;
+              &gt;
+                menu 2
+              &lt;/button&gt;
+            &lt;/template&gt;
+            &lt;template #floating&gt;
+              &lt;div class=&quot;menu -mt-1&quot;&gt;
+                &lt;button class=&quot;menu-item text-gray-400 cursor-not-allowed&quot;&gt;
+                  disabled
+                &lt;/button&gt;
+              &lt;/div&gt;
+            &lt;/template&gt;
+          &lt;/Float&gt;
+        &lt;/div&gt;
+      &lt;/template&gt;
+    &lt;/Float&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+&lt;script lang=&quot;ts&quot; setup&gt;
+import Float from &#39;./Float3.vue&#39;
+&lt;/script&gt;
+&lt;style lang=&quot;postcss&quot;&gt;
+.btn {
+  @apply px-3 py-1 bg-gray-800 text-white font-semibold rounded-lg;
+}
+.menu {
+  @apply w-32 py-1 bg-white ring-1 ring-gray-200 rounded shadow-sm;
+}
+.menu-item {
+  @apply inline-block text-left w-full px-2 py-1 hover:bg-gray-100 focus:outline-none;
+}
+&lt;/style&gt;
+</pre><p>And the final result looks like this:</p><div class="relative text-center py-4"><!--[--><div ref_key="reference" class="inline-block"><!--[--><button class="btn">show menu</button><!--]--></div><!----><!--]--></div><!--]--><!--]--></article><footer class="h-16"></footer></main></article></div>
+<script type="module" src="/vue-cookbook/assets/_default.page.client.ts.5edf824d.js"></script><script id="vite-plugin-ssr_pageContext" type="application/json">{"pageContext":{"_pageId":"/src/pages/interactive/01-create-a-floating-component","pageProps":"!undefined","urlParsedServer":{"origin":null,"pathnameWithBaseUrl":"/interactive/01-create-a-floating-component","hasBaseUrl":false,"search":{},"searchString":null,"hash":"","hashString":null,"isPageContextRequest":false,"pathname":"/interactive/01-create-a-floating-component"}}}</script></body>
 </html>
