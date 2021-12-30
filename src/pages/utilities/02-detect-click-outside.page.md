@@ -56,6 +56,6 @@ app.directive('click-outside', {
 ```
 
 Usage:
-```vue
+```html
 <div v-click-outside:mouseup="onClickOutside"></div>
 ```

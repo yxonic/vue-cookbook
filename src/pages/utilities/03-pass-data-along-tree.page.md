@@ -11,7 +11,7 @@ You have a homogeneous component tree (e.g. nested comments, menus), and you wan
 ## Solution
 Typical way of passing data to child components is to use props. However, this would expose implementation details in public API, and sometimes is not what you want. This also requires component user to correctly fill in props, if the component tree is composed by user:
 
-```vue
+```html
 <menu-item title="File">
   <menu-item parent-title="File" title="Open..."></menu-item>
   <menu-item parent-title="File" title="Save..."></menu-item>
