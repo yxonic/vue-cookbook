@@ -302,6 +302,8 @@ function onMouseLeave() {
 </script>
 ```
 
+With current implementation, we are able to even implement a nesting menu. We delegate menu show and hide control to the underlying component, while observing the visibility state through slot prop `active`.
+
 ```vue
 <template>
   <div class="relative text-center py-4">
