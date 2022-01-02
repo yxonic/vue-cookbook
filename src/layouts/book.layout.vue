@@ -99,7 +99,7 @@
       </button>
       <a
         class="h-6"
-        href="https://github.com/lem0nle/vpage"
+        href="https://github.com/yxonic/vue-cookbook"
         target="_blank"
         rel="noopener"
       >
