@@ -14,7 +14,7 @@
   "dependencies": {
     "@floating-ui/dom": "^0.1.8",
     "@vueuse/head": "^0.7.2",
-    "@yxonic/vmark": "^0.2.1",
+    "@yxonic/vmark": "^0.2.4",
     "vue": "^3.2.26",
     "windicss": "^3.2.1"
   },
