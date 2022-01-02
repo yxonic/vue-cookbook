@@ -1,1 +1,0 @@
-import{d,f as e,o,j as t,k as s}from"./vendor.38dd88c9.js";const c={key:0},_=t("h1",null,"404 Page Not Found",-1),r=s(" This page could not be found. "),a=[_,r],i={key:1},h=t("h1",null,"500 Internal Server Error",-1),l=s(" Something went wrong. "),p=[h,l],k=d({props:{is404:{type:Boolean}},setup(n){return(u,f)=>n.is404?(o(),e("div",c,a)):(o(),e("div",i,p))}});export{k as default};
