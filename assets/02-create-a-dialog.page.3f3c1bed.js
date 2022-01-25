@@ -1,0 +1,1 @@
+import{h as a}from"./vendor.9fa327a8.js";const e=[a("h1",{},["Create a dialog"])],o={title:"Create a dialog",layout:"book"};var r={render(){return e}};export{r as default,o as frontmatter,e as nodes};
