@@ -53,6 +53,14 @@
                     Create a floating component
                   </NavLink>
                 </li>
+                <li>
+                  <NavLink
+                    href="/interactive/02-create-a-dialog"
+                    active-class="text-blue-700 font-medium"
+                  >
+                    Create a dialog
+                  </NavLink>
+                </li>
               </ul>
             </li>
             <li>

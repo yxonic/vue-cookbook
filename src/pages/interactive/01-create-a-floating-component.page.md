@@ -6,18 +6,22 @@ layout: book
 # Create a floating component
 
 ## Problem
+
 You want to show a menu or tooltip like this, after user clicks / hovers a button:
 
 <FloatDemo3 />
 
 ## Solution
+
 Floating components doesn't disrupt the flow of the main content. Therefore, we actually don't have to make any modification to the main content. The biggest concerns of building a floating component are about the floating element itself:
+
 1. We should decide the position of the floating element relative to the reference element.
 2. We want to control when and how it appears / disappears.
 
 For the first concern, there is a dedicated library specifically for floating element positioning called [Floating UI](http://floating-ui.com) (formerly [Popper.js](https://popper.js.org)). It helps us to calculate the relative position of the floating element to the reference, with a handy collection of positioning strategies supported. While it is good to use it as the documentation demonstrates, we may still want to integrate it into a Vue component, in order to have a more consistent API with better organization and control of logic.
 
 ### Take #1
+
 For convenience, we want our Vue component to wrap the reference element, and also be able to write the floating component within it. We can achieve this by using [named slots](https://v3.vuejs.org/guide/component-slots.html#named-slots). The inital API design would be like this:
 
 ```vue
@@ -103,6 +107,7 @@ Some key features in this implementation:
 3. It is made explicit that the position of the floating element is recalculated whenever the reference element changes position (when scroll or resize happens to one of its ancestors). Details are described [here](https://floating-ui.com/docs/computePosition#scrollparents).
 
 ### Take #2
+
 Now we want to control whether the floating element is visible. Our first implementation is a simple one: click to show tooltip, and click outside to hide it.
 
 Basically, our new component maintains an internal state (`visible`) for the visibility of the tooltip. On reference element clicking, we modify `visible` to be true, and register update hooks. We also add a event listener for clicking outside as described [here](/utilities/02-detect-click-outside).
@@ -189,6 +194,7 @@ The result looks like:
 ### Take #3
 
 The final version includes more features to make it even more usable:
+
 1. We support different types of triggering condition (hover). We do this by attaching hooks to mouseover and mouseleave events.
 2. We allow the user to access and change the internal visibility state (See [scoped slots](https://v3.vuejs.org/guide/component-slots.html#scoped-slots)).
 3. We support a smooth transition on visibility change. We do this according to [Vue documentation](https://v3.vuejs.org/guide/transitions-enterleave.html#custom-transition-classes).
